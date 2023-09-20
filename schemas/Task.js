@@ -6,12 +6,12 @@ const taskSchema = new Schema({
   body: String,
   priority: String,
   author: { 
-    type : SchemaTypes.ObjectId,
+    type : Schema.Types.ObjectId,
     ref : 'user',
     required : true
   },
   assigned_userId: {
-    type : SchemaTypes.ObjectId,
+    type : Schema.Types.ObjectId,
     ref : 'user',
     required : true
   },

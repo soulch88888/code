@@ -26,7 +26,7 @@ const UserSchema = new Schema({
   enum:['male','female']
 },
 projects: { 
-    type : mongoose.Types.ObjectId,
+    type : Schema.Types.ObjectId,
     ref : 'Project'
 }
 });
