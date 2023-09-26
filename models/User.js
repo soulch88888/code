@@ -7,8 +7,20 @@ var validateEmail = function(email) {
 }
 
 const UserSchema = new Schema({
-  first_name : String,
-  last_name : String,
+  first_name : {
+    type: String,
+    required: true,
+    minlength: 3,
+    match: [/^[A-Za-z]+$/,'First name should be only alphabets and of min-length 3'] 
+  },
+
+  last_name : {
+    type: String,
+    required: true,
+    minlength: 3,
+    match: [/^[A-Za-z]+$/, 'Last name should be only alphabets and of min-length 3'] 
+  },
+
   Email :{ 
     type : String,
     required : true,
@@ -18,13 +30,22 @@ const UserSchema = new Schema({
 
 },
   age : Number,
+
   password : {
-    type : String,
-    required : true
+     type: String,
+    required: true,
+    minlength: [8, 'Password must be at least 8 characters long.'],
+    match: [
+      /^(?=.*[A-Z])(?=.*\d).*$/,
+      'Password must contain at least one uppercase letter and one digit.',
+    ],
 },
-  gender :  {type: String,
+
+  gender :  {
+    type: String,
   enum:['male','female']
-},
+ },
+ 
 projects: { 
     type : Schema.Types.ObjectId,
     ref : 'Project'
